@@ -1,0 +1,126 @@
+{
+  "api": {
+    "name": "PhonePePaymentSDK",
+    "slug": "phonepepaymentsdk",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "init",
+        "signature": "(options: { environment: string; merchantId: string; appId: string | null; enableLogging: boolean | false; }) => Promise<Record<string, boolean>>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "{ environment: string; merchantId: string; appId: string | null; enableLogging: boolean; }"
+          }
+        ],
+        "returns": "Promise<Record<string, boolean>>",
+        "tags": [],
+        "docs": "This method is used to initiate PhonePe Payment sdk.\nProvide all the information as requested by the method signature.\nParams:\n  - environment: This signified the environment required for the payment sdk\n    possible values: SANDBOX, PRODUCTION\n    if any unknown value is provided, PRODUCTION will be considered as default.\n  - merchantId: The merchant id provided by PhonePe  at the time of onboarding.\n  - appId:  The appId provided by PhonePe at the time of onboarding. send null if not provided.\n      - enabled = YES\n      - disable = NO\n  - Return: Boolean (TRUE -> SUCCESS).\n      - SUCCESS: TRUE\n      - FAILURE: FALSE\n          - in iOS = False (if AppID missing:-Please provide PhonePe AppId)\n          - in Android = Error in case of invalid arguments ex: \"Invalid environment or merchantId!\"",
+        "complexTypes": [
+          "Record"
+        ],
+        "slug": "init"
+      },
+      {
+        "name": "startTransaction",
+        "signature": "(options: { body: string; checksum: string; packageName: string | null; appSchema: string | null; }) => Promise<Record<string, string>>",
+        "parameters": [
+          {
+            "name": "options",
+            "docs": "",
+            "type": "{ body: string; checksum: string; packageName: string | null; appSchema: string | null; }"
+          }
+        ],
+        "returns": "Promise<Record<string, string>>",
+        "tags": [],
+        "docs": "This method is used to initiate PhonePe B2B PG Flow.\nProvide all the information as requested by the method signature.\nParams:\n   - body : The request body for the transaction as per the developer docs, Make sure the request body is base64encoded.\n   - checksum: checksum for the particular transaction as per the developer docs.\n   - packageName: @Optional(Not need for iOS) For android, it is a packageName for specific app.\n   - appSchema: @Optional(Not need for Android) For iOS, Your custom URL Schemes, as per the developer docs.\nReturn: Will be returning a dictionary / hashMap\n { \n    status: String, // string value to provide the status of the transcation\n                    // possible values: SUCCESS, FAILURE, INTERUPTED\n    error: String   // if any error occurs\n }",
+        "complexTypes": [
+          "Record"
+        ],
+        "slug": "starttransaction"
+      },
+      {
+        "name": "isPhonePeInstalled",
+        "signature": "() => Promise<Record<string, boolean>>",
+        "parameters": [],
+        "returns": "Promise<Record<string, boolean>>",
+        "tags": [],
+        "docs": "This method is called to verify / check if PhonePe app is installed on the user / target device.\nReturn: Boolean\n YES -> PhonePe app installed/available\n NO -> PhonePe app unavailable\n NOTE :- In iOS, Add all the request Query URL Schema as per the developer doc.",
+        "complexTypes": [
+          "Record"
+        ],
+        "slug": "isphonepeinstalled"
+      },
+      {
+        "name": "isPaytmInstalled",
+        "signature": "() => Promise<Record<string, boolean>>",
+        "parameters": [],
+        "returns": "Promise<Record<string, boolean>>",
+        "tags": [],
+        "docs": "This method is called to verify / check if Paytm app is installed on the user / target device.\nReturn: Boolean\n YES -> Paytm app installed/available\n NO -> Paytm app unavailable\n NOTE :- In iOS, Add all the request Query URL Schema as per the developer doc.",
+        "complexTypes": [
+          "Record"
+        ],
+        "slug": "ispaytminstalled"
+      },
+      {
+        "name": "isGpayInstalled",
+        "signature": "() => Promise<Record<string, boolean>>",
+        "parameters": [],
+        "returns": "Promise<Record<string, boolean>>",
+        "tags": [],
+        "docs": "This method is called to verify / check if GPay app is installed on the user / target device.\nReturn: Boolean\n YES -> GPay app installed/available\n NO -> GPay app unavailable\n NOTE :- In iOS, Add all the request Query URL Schema as per the developer doc.",
+        "complexTypes": [
+          "Record"
+        ],
+        "slug": "isgpayinstalled"
+      },
+      {
+        "name": "getPackageSignatureForAndroid",
+        "signature": "() => Promise<Record<string, string>>",
+        "parameters": [],
+        "returns": "Promise<Record<string, string>>",
+        "tags": [],
+        "docs": "This method is called to get package signature while creation of AppId in @Android only.\nReturn: String\n Non empty string -> app package signature\n NOTE :- In iOS, it will throw os error at runtime.",
+        "complexTypes": [
+          "Record"
+        ],
+        "slug": "getpackagesignatureforandroid"
+      },
+      {
+        "name": "getUpiAppsForAndroid",
+        "signature": "() => Promise<Record<string, string>>",
+        "parameters": [],
+        "returns": "Promise<Record<string, string>>",
+        "tags": [],
+        "docs": "This method is called to get list of upi apps in @Android only.\nReturn: String\n JSON String -> List of UPI App with packageName, applicationName & versionCode\n NOTE :- In iOS, it will throw os error at runtime.",
+        "complexTypes": [
+          "Record"
+        ],
+        "slug": "getupiappsforandroid"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [],
+  "enums": [],
+  "typeAliases": [
+    {
+      "name": "Record",
+      "slug": "record",
+      "docs": "Construct a type with a set of properties K of type T",
+      "types": [
+        {
+          "text": "{\r\n    [P in K]: T;\r\n}",
+          "complexTypes": [
+            "K",
+            "T"
+          ]
+        }
+      ]
+    }
+  ],
+  "pluginConfigs": []
+}

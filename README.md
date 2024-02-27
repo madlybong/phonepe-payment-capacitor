@@ -1,4 +1,4 @@
-# phonepe-payment-capacitor (Clone Repo / Unofficial)
+# phonepe-payment-capacitor
 
 A Plugin to integrate with Ionic Platform for PhonePe Payment Solutions
 
@@ -177,8 +177,6 @@ Return: String
 
 Construct a type with a set of properties K of type T
 
-<code>{
- [P in K]: T;
- }</code>
+<code>{ [P in K]: T; }</code>
 
 </docgen-api>
